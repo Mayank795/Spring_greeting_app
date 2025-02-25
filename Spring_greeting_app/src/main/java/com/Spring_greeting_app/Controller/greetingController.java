@@ -21,16 +21,15 @@ public class greetingController {
     // Add a new endpoint to use the service layer
     @GetMapping("/simple")
     public Greeting getSimpleGreeting() {
-        String message = greetingService.getSimpleGreeting();
-        return new Greeting(message);
+      return greetingService.getSimpleGreeting();
     }
 
  //UC3
  // New endpoint for greeting with full name
  @PostMapping("/fullname")
  public Greeting getGreetingWithFullName(@RequestParam String firstName, @RequestParam String lastName) {
-     String message = greetingService.getGreetingWithFullName(firstName, lastName);
-     return new Greeting(message);
+
+     return greetingService.getGreetingWithFullName(firstName,lastName);
  }
 
 }

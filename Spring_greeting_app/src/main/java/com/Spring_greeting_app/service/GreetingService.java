@@ -1,15 +1,23 @@
 package com.Spring_greeting_app.service;
 
+import com.Spring_greeting_app.GreetingRepository;
+import com.Spring_greeting_app.model.Greeting;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GreetingService {
-
-    public String getSimpleGreeting() {
-        return "Hello World";
+    @Autowired
+    private GreetingRepository greetingRepository;
+    // Default greeting
+    public Greeting getSimpleGreeting() {
+        Greeting greeting = new Greeting("Hello World");
+        return greetingRepository.save(greeting); // Save to repository
     }
 
-    public String getGreetingWithFullName(String firstName, String lastName) {
-        return "Hello " + firstName + " " + lastName;
+    // Greeting with full name
+    public Greeting getGreetingWithFullName(String firstName, String lastName) {
+        Greeting greeting = new Greeting("Hello " + firstName + " " + lastName);
+        return greetingRepository.save(greeting); // Save to repository
     }
 }
