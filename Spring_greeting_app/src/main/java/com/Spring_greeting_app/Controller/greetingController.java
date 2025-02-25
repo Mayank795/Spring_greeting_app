@@ -3,9 +3,7 @@ package com.Spring_greeting_app.Controller;
 import com.Spring_greeting_app.model.Greeting;
 import com.Spring_greeting_app.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/greeting")
@@ -27,6 +25,13 @@ public class greetingController {
         return new Greeting(message);
     }
 
+ //UC3
+ // New endpoint for greeting with full name
+ @PostMapping("/fullname")
+ public Greeting getGreetingWithFullName(@RequestParam String firstName, @RequestParam String lastName) {
+     String message = greetingService.getGreetingWithFullName(firstName, lastName);
+     return new Greeting(message);
+ }
 
 }
 
