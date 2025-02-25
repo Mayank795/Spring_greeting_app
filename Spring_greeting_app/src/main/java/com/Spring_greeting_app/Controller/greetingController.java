@@ -4,6 +4,7 @@ import com.Spring_greeting_app.model.Greeting;
 import com.Spring_greeting_app.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/greeting")
@@ -26,11 +27,19 @@ public class greetingController {
 
  //UC3
  // New endpoint for greeting with full name
- @PostMapping("/fullname")
+ @GetMapping("/fullname")
  public Greeting getGreetingWithFullName(@RequestParam String firstName, @RequestParam String lastName) {
 
      return greetingService.getGreetingWithFullName(firstName,lastName);
  }
+
+//UC5
+// New endpoint to find greeting by ID
+    @GetMapping("/{id}")
+    public Optional<Greeting> getGreetingById(@PathVariable Long id) {
+        return greetingService.getGreetingById(id);
+    }
+
 
 }
 
