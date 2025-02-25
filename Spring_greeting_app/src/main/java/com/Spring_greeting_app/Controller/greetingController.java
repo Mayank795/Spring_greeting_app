@@ -53,6 +53,13 @@ public class greetingController {
         return greetingService.updateGreeting(id, updatedGreeting);
     }
 
+//UC8
+// Delete a greeting message
+@DeleteMapping("/delete/{id}")
+public String deleteGreeting(@PathVariable Long id) {
+    greetingService.deleteGreeting(id);
+    return "Greeting with ID " + id + " has been deleted successfully.";
+}
 
 }
 
